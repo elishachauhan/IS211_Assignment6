@@ -2,75 +2,74 @@
 # -*- coding: utf-8 -*-
 """A small docstring for Tests"""
 
-import conversions as con
+import conversions
+import unittest
 
-print "TEST FOR convertCelsiusToKelvin()"
-tests = [(500.00, 773.15), (490.00, 763.15), (450.00, 723.15), (410.00, 683.15), (380.00, 653.15)]
-for i, o in tests:
-    c = con.convertCelsiusToKelvin(i)
-    if o==c:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST PASS"%(i, o, c)
-    else:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST FAIL"%(i, o, c)
+class KnownValues(unittest.TestCase):
+    knownValues = ( (0.0, 273.15, 32.0),
+                    (300.0, 573.15, 572.0),
+                    (25.49, 298.64, 77.882),
+                    (200, 473.15, 392),
+                    (150.00, 423.15, 302.00),
+                    (-220.00, 53.15, -364.00),
+                    (-40.0, 233.15, -40.0),
+                    )
 
-print ""
+    def testConvertCelciusToKelvin(self):
+        print "\nNow testing convertCelciusToKelvin() function:"
+
+        for i in range(0,len(self.knownValues)):
+            result = conversions.convertCelciusToKelvin(self.knownValues[i][0]) 
+            kelvin = self.knownValues[i][1]
+            self.assertEqual(kelvin, result) 
+            print "   testing celcius = %f; %f = %f; Passed" % (self.knownValues[i][0], kelvin, result)
+
+    def testConvertCelciusToFahrenheit(self):
+        print "\nNow testing convertCelciusToFahrenheit function:"
+
+        for i in range(0,len(self.knownValues)):
+            result = conversions.convertCelciusToFahrenheit(self.knownValues[i][0]) 
+            fahrenheit = self.knownValues[i][2]
+            self.assertEqual(fahrenheit, result) 
+            print "   testing celcius = %f; %f = %f; Passed" % (self.knownValues[i][0], fahrenheit, result)
+
+    def testConvertFahrenheitToCelcius(self):
+        print "\nNow testing convertFahrenheitToCelcius function:"
+
+        for i in range(0,len(self.knownValues)):
+            result = conversions.convertFahrenheitToCelcius(self.knownValues[i][2]) 
+            celcius = self.knownValues[i][0]
+            self.assertEqual(celcius, result) 
+            print "   testing fahrenheit = %f; %f = %f; Passed" % (self.knownValues[i][2], celcius, result)
+
+    def testConvertFahrenheitToKelvin(self):
+        print "\nNow testing convertFahrenheitToKelvin function:"
+
+        for i in range(0,len(self.knownValues)):
+            result = conversions.convertFahrenheitToKelvin(self.knownValues[i][2]) 
+            kelvin = self.knownValues[i][1]
+            self.assertEqual(kelvin, result) 
+            print "   testing fahrenheit = %f; %f = %f; Passed" % (self.knownValues[i][2], kelvin, result)
+
+    def testConvertKelvinToCelcius(self):
+        print "\nNow testing convertKelvinToCelcius function:"
+
+        for i in range(0,len(self.knownValues)):
+            result = conversions.convertKelvinToCelcius(self.knownValues[i][1]) 
+            celcius = self.knownValues[i][0]
+            self.assertEqual(celcius, result) 
+            print "   testing kelvin = %f; %f = %f; Passed" % (self.knownValues[i][1], celcius, result)
+
+    def testConvertKelvinToFahrenheit(self):
+        print "\nNow testing convertKelvinToFahrenheit function:"
+
+        for i in range(0,len(self.knownValues)):
+            result = conversions.convertKelvinToFahrenheit(self.knownValues[i][1]) 
+            fahrenheit = self.knownValues[i][2]
+            self.assertEqual(fahrenheit, result) 
+            print "   testing kelvin = %f; %f = %f; Passed" % (self.knownValues[i][1], fahrenheit, result)
 
 
-print "TEST FOR convertCelsiusToFahrenheit()"
-tests = [(500.00, 932.00), (490.00, 914.00), (450.00, 842.00), (410.00, 770.00), (380.00, 716.00)]
-for i, o in tests:
-    c = con.convertCelsiusToFahrenheit(i)
-    if o==c:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST PASS"%(i, o, c)
-    else:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST FAIL"%(i, o, c)
 
-print ""
-
-
-print "TEST FOR convertFahrenheitToCelsius()"
-tests = [(500.00, 932.00), (490.00, 914.00), (450.00, 842.00), (410.00, 770.00), (380.00, 716.00)]
-for o, i in tests:
-    c = con.convertFahrenheitToCelsius(i)
-    if o==c:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST PASS"%(i, o, c)
-    else:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST FAIL"%(i, o, c)
-
-print ""
-
-
-print "TEST FOR convertFahrenheitToKelvin()"
-tests = [(932.00, 773.15), (914.00, 763.15), (842.00, 723.15), (770.00, 683.15), (716.00, 653.15)]
-for i, o in tests:
-    c = con.convertFahrenheitToKelvin(i)
-    if o==c:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST PASS"%(i, o, c)
-    else:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST FAIL"%(i, o, c)
-
-print ""
-
-
-print "TEST FOR convertKelvinToFahrenheit()"
-tests = [(932.00, 773.15), (914.00, 763.15), (842.00, 723.15), (770.00, 683.15), (716.00, 653.15)]
-for o, i in tests:
-    c = con.convertKelvinToFahrenheit(i)
-    if o==c:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST PASS"%(i, o, c)
-    else:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST FAIL"%(i, o, c)
-
-print ""
-
-
-print "TEST FOR convertKelvinToCelsius()"
-tests = [(500.00, 773.15), (490.00, 763.15), (450.00, 723.15), (410.00, 683.15), (380.00, 653.15)]
-for o, i in tests:
-    c = con.convertKelvinToCelsius(i)
-    if o==c:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST PASS"%(i, o, c)
-    else:
-        print "Input given: %.2f | Expected output: %.2f | Resultant output: %.2f | TEST FAIL"%(i, o, c)
-
-print ""
+if __name__ == "__main__":
+    unittest.main()
