@@ -2,20 +2,25 @@
 # -*- coding: utf-8 -*-
 """A small docstring for Assignment 6"""
 
-def convertCelsiusToKelvin(celsiusFloat):
-    return round(celsiusFloat + 273.15, 2)
+def convertCelciusToKelvin(celcius):
+    return round(celcius+273.15, 10)
 
-def convertCelsiusToFahrenheit(celsiusFloat):
-    return round((celsiusFloat*9/5) + 32, 2)
 
-def convertFahrenheitToCelsius(fahrenheitFloat):
-    return round((fahrenheitFloat-32)*5/9, 2)
+def convertFahrenheitToCelcius(fahrenheit):
+    return round(((fahrenheit-32)*(5.0/9.0)), 10)
 
-def convertFahrenheitToKelvin(fahrenheitFloat):
-    return round((fahrenheitFloat+459.67)*5/9, 2)
 
-def convertKelvinToFahrenheit(kelvinFloat):
-    return round((kelvinFloat*9/5)-459.67, 2)
+def convertFahrenheitToKelvin(fahrenheit):
+    return round(((fahrenheit-32)*(5.0/9.0))+273.15, 10)
 
-def convertKelvinToCelsius(kelvinFloat):
-    return round(kelvinFloat-273.15, 2)
+
+def convertKelvinToCelcius(kelvin):
+    return round(kelvin-273.15, 10)
+
+
+def convertKelvinToFahrenheit(kelvin):
+    return round((((kelvin-273.15)* (9.0/5.0))+32), 10)
+
+
+
+
